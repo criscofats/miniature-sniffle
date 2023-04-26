@@ -9,14 +9,14 @@ all:
 
     automationhub:
       hosts:
-        automationhub.hyperv.corvus.local:
+        automationhub:
       vars:
         connection: ssh
 
     # can be automationhub if you do not have a specific server for this
     builder:
       hosts:
-        automationhub.hyperv.corvus.local:
+        automationhub:
       vars:
         connection: ssh
 
