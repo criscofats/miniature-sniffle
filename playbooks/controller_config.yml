@@ -117,15 +117,15 @@
         name: infra.controller_configuration.credential_input_sources
       when: controller_credential_input_sources is defined #| length is not match('0')
 
-    # - name: Include instance_groups role
-    #   ansible.builtin.include_role:
-    #     name: infra.controller_configuration.instance_groups
-    #   when: controller_instance_groups is defined #| length is not match('0')
+    - name: Include instance_groups role
+      ansible.builtin.include_role:
+        name: infra.controller_configuration.instance_groups
+      when: controller_instance_groups is defined #| length is not match('0')
 
-    # - name: Include execution_environments role
-    #   ansible.builtin.include_role:
-    #     name: infra.controller_configuration.execution_environments
-    #   when: controller_execution_environments is defined #| length is not match('0')
+    - name: Include execution_environments role
+      ansible.builtin.include_role:
+        name: infra.controller_configuration.execution_environments
+      when: controller_execution_environments is defined #| length is not match('0')
 
     - name: Include organizations role
       ansible.builtin.include_role:
