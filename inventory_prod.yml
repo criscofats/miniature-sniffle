@@ -3,26 +3,30 @@ all:
   children:
     prod:
       hosts:
-        127.0.0.1:
+        192.168.1.101:
       vars:
         connection: local
     automationcontroller:
       hosts:
-        HERE:
+        controller:
 
     automationhub:
       hosts:
-        HERE:
+        automationhub.hyperv.corvus.local:
+      vars:
+        connection: ssh
 
     # can be automationhub if you do not have a specific server for this
     builder:
       hosts:
-        HERE:
+        automationhub.hyperv.corvus.local:
+      vars:
+        connection: ssh
 
     # only needed if installing AAP with automation, can be removed if you are not
-    database:
-      hosts:
-        HERE:
+    # database:
+    #   hosts:
+    #     HERE:
   vars:
     env: prod
 ...

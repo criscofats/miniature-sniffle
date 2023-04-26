@@ -1,0 +1,11 @@
+---
+controller_inventory_sources:
+  - name: "Insights Source"
+    description: ""
+    organization: "Default"
+    source: "insights"
+    inventory: "Home Inventory"
+    update_on_launch: "True"
+    overwrite: "False"
+    credential: "Insights"
+...

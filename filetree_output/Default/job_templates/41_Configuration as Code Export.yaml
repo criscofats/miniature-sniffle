@@ -1,0 +1,24 @@
+---
+controller_templates:
+  - name: "Configuration as Code Export"
+    description: ""
+    organization: "Default"
+    project: "Configuration as Code"
+    inventory: "Home Inventory"
+    playbook: "playbooks/cacaapexport.yml"
+    job_type: "run"
+    fact_caching_enabled: "False"
+    credentials:
+      - "Configuration as Code Credential"
+    concurrent_jobs_enabled: "False"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "False"
+    ask_variables_on_launch: "False"
+    extra_vars:
+      controller_hostname: magpie
+      controller_validate_certs: false
+    execution_environment: "Default execution environment"
+    survey_enabled: False
+    survey_spec: {}
+...

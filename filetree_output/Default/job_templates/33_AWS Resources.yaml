@@ -1,0 +1,28 @@
+---
+controller_templates:
+  - name: "AWS Resources"
+    description: "Provision all resources EXCEPT for EC2 instances"
+    organization: "Default"
+    project: "Home Lab"
+    inventory: "AWS Open Environment"
+    playbook: "ec2_resources.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "AWS Open Environment"
+    concurrent_jobs_enabled: "True"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "True"
+    ask_variables_on_launch: "False"
+    extra_vars:
+      ec2_az: !unsafe '{{ec2_region}}a'
+      ec2_network_vpc2: 172.18.0.0/16
+      ec2_subnet: 172.16.0.0/16
+      ec2_subnet2: 172.17.0.0/16
+      ec2_wait: true
+      ssh_port: 22
+    execution_environment: "workshop_ee"
+    survey_enabled: True
+    survey_spec: {'name': '', 'description': '', 'spec': [{'question_name': 'EC2 Region', 'question_description': 'Region where the resources will live', 'required': True, 'type': 'multiplechoice', 'variable': 'ec2_region', 'min': 1, 'max': 1024, 'default': 'us-east-1', 'choices': 'us-east-1\nus-east-2\nus-west-1\nus-west-2', 'new_question': True}, {'question_name': 'EC2 Name Prefix', 'question_description': 'Name prefix for all resources (No uppercase, no underscores)', 'required': True, 'type': 'text', 'variable': 'ec2_name_prefix', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'DNS Type', 'question_description': 'Turn DNS on for nodes, and set to type in valid_dns_type', 'required': True, 'type': 'text', 'variable': 'dns_type', 'min': 1, 'max': 1024, 'default': 'aws', 'choices': '', 'new_question': True}, {'question_name': 'Workshop DNS zone', 'question_description': 'Sets the Route53 DNS zone to use for Amazon Web Services', 'required': True, 'type': 'text', 'variable': 'workshop_dns_zone', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}]}
+...

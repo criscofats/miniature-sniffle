@@ -1,0 +1,6 @@
+---
+controller_inventories:
+  - name: "Home Inventory"
+    description: ""
+    organization: "Default"
+...

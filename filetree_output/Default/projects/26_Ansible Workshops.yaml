@@ -1,0 +1,16 @@
+---
+controller_projects:
+  - name: "Ansible Workshops"
+    description: "ideal-robot repo for private workshop changes"
+    organization: "Default"
+    scm_type: "git"
+    scm_url: "git@github.com:criscofats/ideal-robot.git"
+    scm_credential: "GitHub"
+    scm_branch: ""
+    scm_clean: "False"
+    scm_delete_on_update: "False"
+    scm_update_on_launch: "False"
+    scm_update_cache_timeout: "0"
+    allow_override: "True"
+    timeout: 0
+...
