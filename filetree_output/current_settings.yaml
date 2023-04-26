@@ -5,7 +5,7 @@ controller_settings:
       ACTIVITY_STREAM_ENABLED_FOR_INVENTORY_SYNC: true
       ORG_ADMINS_CAN_SEE_ALL_USERS: true
       MANAGE_ORGANIZATION_AUTH: true
-      TOWER_URL_BASE: https://127.0.0.1
+      TOWER_URL_BASE: https://192.168.1.101
       REMOTE_HOST_HEADERS: ['REMOTE_ADDR', 'REMOTE_HOST']
       PROXY_IP_ALLOWED_LIST: []
       LICENSE: {'subscription_name': 'Employee SKU', 'sku': 'ES0113909', 'support_level': 'Self-Support', 'instance_count': 9999999, 'license_date': 1692071999, 'license_type': 'enterprise', 'product_name': 'Red Hat Ansible Automation Platform', 'valid_key': true, 'satellite': null, 'pool_id': '2c94b92882fed28e0183315553db4241'}
@@ -46,7 +46,7 @@ controller_settings:
       AUTH_BASIC_ENABLED: true
       OAUTH2_PROVIDER: {'ACCESS_TOKEN_EXPIRE_SECONDS': 31536000000, 'REFRESH_TOKEN_EXPIRE_SECONDS': 2628000, 'AUTHORIZATION_CODE_EXPIRE_SECONDS': 600}
       ALLOW_OAUTH2_FOR_EXTERNAL_USERS: false
-      LOGIN_REDIRECT_OVERRIDE: 
+      LOGIN_REDIRECT_OVERRIDE: ""
       PENDO_TRACKING_STATE: detailed
       CUSTOM_LOGIN_INFO: ""
       CUSTOM_LOGO: ""
