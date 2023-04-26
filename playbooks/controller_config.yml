@@ -4,7 +4,7 @@
   vars_files:
     - "../vaults/{{ env }}.yml"
     - "../vaults/vault"
-    - "../vaults/server_priv"
+    # - "../vaults/server_priv"
   connection: local
   tasks:
     - name: Include all vars from /filetree_output
