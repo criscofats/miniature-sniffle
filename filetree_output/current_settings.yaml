@@ -37,8 +37,8 @@ controller_settings:
       DEFAULT_PROJECT_UPDATE_TIMEOUT: 0
       ANSIBLE_FACT_CACHE_TIMEOUT: 0
       MAX_FORKS: 200
-      AUTOMATION_ANALYTICS_LAST_GATHER: 2023-04-19T18:27:10.456678Z
-      AUTOMATION_ANALYTICS_LAST_ENTRIES: "{\"config\": \"2023-04-19T18:27:10.456Z\", \"counts\": \"2023-04-19T18:27:10.456Z\", \"cred_type_counts\": \"2023-04-19T18:27:10.456Z\", \"instance_info\": \"2023-04-19T18:27:10.456Z\", \"inventory_counts\": \"2023-04-19T18:27:10.456Z\", \"org_counts\": \"2023-04-19T18:27:10.456Z\", \"projects_by_scm_type\": \"2023-04-19T18:27:10.456Z\", \"query_info\": \"2023-04-19T18:27:10.456Z\", \"events_table\": \"2023-04-19T18:27:10.456Z\", \"unified_job_template_table\": \"2023-04-19T18:27:10.456Z\", \"unified_jobs_table\": \"2023-04-19T18:27:10.456Z\", \"workflow_job_node_table\": \"2023-04-19T18:27:10.456Z\", \"workflow_job_template_node_table\": \"2023-04-19T18:27:10.456Z\"}"
+      # AUTOMATION_ANALYTICS_LAST_GATHER: 2023-04-19T18:27:10.456678Z
+      # AUTOMATION_ANALYTICS_LAST_ENTRIES: "{\"config\": \"2023-04-19T18:27:10.456Z\", \"counts\": \"2023-04-19T18:27:10.456Z\", \"cred_type_counts\": \"2023-04-19T18:27:10.456Z\", \"instance_info\": \"2023-04-19T18:27:10.456Z\", \"inventory_counts\": \"2023-04-19T18:27:10.456Z\", \"org_counts\": \"2023-04-19T18:27:10.456Z\", \"projects_by_scm_type\": \"2023-04-19T18:27:10.456Z\", \"query_info\": \"2023-04-19T18:27:10.456Z\", \"events_table\": \"2023-04-19T18:27:10.456Z\", \"unified_job_template_table\": \"2023-04-19T18:27:10.456Z\", \"unified_jobs_table\": \"2023-04-19T18:27:10.456Z\", \"workflow_job_node_table\": \"2023-04-19T18:27:10.456Z\", \"workflow_job_template_node_table\": \"2023-04-19T18:27:10.456Z\"}"
       AUTOMATION_ANALYTICS_GATHER_INTERVAL: 7200
       SESSION_COOKIE_AGE: 18000
       SESSIONS_PER_USER: -1
