@@ -9,6 +9,7 @@ controller_api_user_pass: "{{ vault_controller_api_user_pass }}" #'this will cre
 controller_pass: "{{ vault_controller_pass }}" #'admin account pass for controller, if none is given it will default to Password1234!'
 ah_pass: "{{ vault_ah_pass }}" #'hub admin account pass, if none is given it will default to Password1234!'
 ah_host: "{{ vault_ah_host }}"
+ah_token: "{{ vault_ah_token }}"
 vault_pass: "{{ vault_vault_pass }}" #'the password to decrypt this vault'
 controller_validate_certs: false
 ah_validate_certs: false
