@@ -1,0 +1,10 @@
+---
+controller_credentials:
+  - name: "Red Hat Offline Token"
+    description: ""
+    credential_type: "Red Hat Offline Token"
+    organization: "Default"
+    inputs:
+      offline_token: ''
+
+...

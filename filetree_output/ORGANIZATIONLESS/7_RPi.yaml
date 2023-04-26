@@ -1,0 +1,14 @@
+---
+controller_credentials:
+  - name: "RPi"
+    description: "Raspberry Pi"
+    credential_type: "Machine"
+    organization: "Default"
+    inputs:
+      become_method: sudo
+      become_password: ''
+      become_username: pi
+      password: ''
+      username: pi
+
+...

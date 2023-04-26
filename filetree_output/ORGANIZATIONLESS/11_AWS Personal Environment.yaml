@@ -1,0 +1,11 @@
+---
+controller_credentials:
+  - name: "AWS Personal Environment"
+    description: ""
+    credential_type: "Amazon Web Services"
+    organization: "Default"
+    inputs:
+      password: ''
+      username: AKIA2Q4IIN6MUT33JGX3
+
+...

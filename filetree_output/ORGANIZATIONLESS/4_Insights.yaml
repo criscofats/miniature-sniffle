@@ -1,0 +1,11 @@
+---
+controller_credentials:
+  - name: "Insights"
+    description: "Red Hat Insights"
+    credential_type: "Insights"
+    organization: "Default"
+    inputs:
+      password: ''
+      username: cmcaskill
+
+...
