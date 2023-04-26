@@ -1,0 +1,23 @@
+---
+all:
+  children:
+    automationcontroller:
+      hosts:
+        controller:
+      vars:
+        connection: local
+
+    automationhub:
+      hosts:
+        automationhub.hyperv.corvus.local:
+      vars:
+        connection: ssh
+
+    builder:
+      hosts:
+        automationhub.hyperv.corvus.local:
+      vars:
+        connection: ssh
+  vars:
+    env: prod
+...

@@ -1,12 +1,14 @@
 ---
-cloud_token: 'this is the one from console.redhat.com'
-offline_token: 'this is the one linked below about api token'
-rh_username: 'redhat user login (this is used to attach your subs to controller)'
-rh_password: 'password for redhat account'
-root_machine_pass: 'password for root user on builder (if not root user more changes will need to be made)'
-ah_token_password: 'this will create and use this password can be generated'
-controller_api_user_pass: 'this will create and use this password can be generated'
-controller_pass: 'admin account pass for controller, if none is given it will default to Password1234!'
-ah_pass: 'hub admin account pass, if none is given it will default to Password1234!'
-vault_pass: 'the password to decrypt this vault'
+cloud_token: "{{ vault_cloud_token }}" #'this is the one from console.redhat.com'
+offline_token: "{{ vault_offline_token }}" #'this is the one linked below about api token'
+rh_username: "{{ vault_rh_username }}" #'redhat user login (this is used to attach your subs to controller)'
+rh_password: "{{ vault_rh_password }}" #'password for redhat account'
+root_machine_pass: "{{ vault_root_machine_pass }}" #'password for root user on builder (if not root user more changes will need to be made)'
+ah_token_password: "{{ vault_ah_token_password }}" #'this will create and use this password can be generated'
+controller_api_user_pass: "{{ vault_controller_api_user_pass }}" #'this will create and use this password can be generated'
+controller_pass: "{{ vault_controller_pass }}" #'admin account pass for controller, if none is given it will default to Password1234!'
+ah_pass: "{{ vault_ah_pass }}" #'hub admin account pass, if none is given it will default to Password1234!'
+vault_pass: "{{ vault_vault_pass }}" #'the password to decrypt this vault'
+controller_validate_certs: false
+ah_validate_certs: false
 ...
