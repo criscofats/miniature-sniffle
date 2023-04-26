@@ -3,6 +3,7 @@ cloud_token: "{{ vault_cloud_token }}" #'this is the one from console.redhat.com
 offline_token: "{{ vault_offline_token }}" #'this is the one linked below about api token'
 rh_username: "{{ vault_rh_username }}" #'redhat user login (this is used to attach your subs to controller)'
 rh_password: "{{ vault_rh_password }}" #'password for redhat account'
+rhemp_password: "{{ vault_rhemp_password }}"
 root_machine_pass: "{{ vault_root_machine_pass }}" #'password for root user on builder (if not root user more changes will need to be made)'
 ah_token_password: "{{ vault_ah_token_password }}" #'this will create and use this password can be generated'
 controller_api_user_pass: "{{ vault_controller_api_user_pass }}" #'this will create and use this password can be generated'
@@ -11,6 +12,10 @@ ah_pass: "{{ vault_ah_pass }}" #'hub admin account pass, if none is given it wil
 ah_host: "{{ vault_ah_host }}"
 ah_token: "{{ vault_ah_token }}"
 vault_pass: "{{ vault_vault_pass }}" #'the password to decrypt this vault'
+insights_password: "{{ vault_insights_password }}"
+pi_password: "{{ vault_pi_password }}"
+github_token: "{{ vault_github_token }}"
+github_key: "{{ vault_github_key }}"
 controller_validate_certs: false
 ah_validate_certs: false
 ...
