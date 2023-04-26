@@ -1,0 +1,20 @@
+---
+controller_inventory_sources:
+  - name: "AWS"
+    description: ""
+    organization: "Default"
+    source: "ec2"
+    inventory: "AWS Open Environment"
+    update_on_launch: "False"
+    overwrite: "False"
+    credential: "AWS Open Environment"
+
+  - name: "Insights Source"
+    description: ""
+    organization: "Default"
+    source: "insights"
+    inventory: "Home Inventory"
+    update_on_launch: "True"
+    overwrite: "False"
+    credential: "Insights"
+...

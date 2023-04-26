@@ -1,0 +1,858 @@
+---
+controller_templates:
+  - name: "Ping"
+    description: ""
+    organization: "Default"
+    project: "Home Lab"
+    inventory: "Home Inventory"
+    playbook: "ping-test.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "Linux"
+    concurrent_jobs_enabled: "False"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "False"
+    ask_variables_on_launch: "False"
+    execution_environment: "Default execution environment"
+    survey_enabled: False
+    survey_spec: {}
+
+  - name: "Apply Linux update"
+    description: "Update all Linux hosts"
+    organization: "Default"
+    project: "Home Lab"
+    inventory: "Home Inventory"
+    playbook: "nixupdate.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "Linux"
+    concurrent_jobs_enabled: "True"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "False"
+    ask_variables_on_launch: "False"
+    execution_environment: "__omit_place_holder__8096815096a479612e90978bd3fb1c6935e34bdd"
+    survey_enabled: False
+    survey_spec: {}
+
+  - name: "Check Linux Updates"
+    description: ""
+    organization: "Default"
+    project: "Home Lab"
+    inventory: "Home Inventory"
+    playbook: "checknixupdate.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "Linux"
+    concurrent_jobs_enabled: "False"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "False"
+    ask_variables_on_launch: "False"
+    execution_environment: "Default execution environment"
+    survey_enabled: False
+    survey_spec: {}
+
+  - name: "AWS Provisioner"
+    description: "AWS Open Environment Provisioner"
+    organization: "Default"
+    project: "Ansible Workshops"
+    inventory: "AWS Open Environment"
+    playbook: "provisioner/provision_lab.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "AWS Open Environment"
+      - "Base64 Manifest"
+      - "Red Hat Credential"
+      - "Red Hat Offline Token"
+    concurrent_jobs_enabled: "True"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "True"
+    ask_variables_on_launch: "True"
+    extra_vars:
+      autolicense: true
+      controller_install_command: ./setup.sh -e gpgcheck=0
+      create_login_page: true
+      ec2_xtra:
+        centos78:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.8*x86_64
+          os_type: linux
+          owners: 723450883993
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        centos79:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.9*x86_64
+          os_type: linux
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        private_automation_hub:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        rhel68:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-6.8_HVM_GA*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel7:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-7.9_HVM*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel8:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: t3.micro
+          username: ec2-user
+        rhel8-tower:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        satellite:
+          architecture: x86_64
+          disk_iops: 4000
+          disk_space: 500
+          disk_throughput: 375
+          disk_volume_type: gp3
+          filter: Satellite 6.10*
+          os_type: linux
+          owners: 723450883993
+          size: r5a.xlarge
+          username: ec2-user
+      ee_default_image: !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      ee_images:
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-29-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-minimal-rhel8:latest'
+      ee_registry_name: registry.redhat.io
+      ibm_community_grid: false
+      tower_node_aws_api_access: true
+    execution_environment: "workshop_ee"
+    survey_enabled: True
+    survey_spec: {'name': '', 'description': '', 'spec': [{'question_name': 'EC2 Region', 'question_description': 'Region where the nodes will live', 'required': True, 'type': 'multiplechoice', 'variable': 'ec2_region', 'min': 0, 'max': 1024, 'default': 'us-east-1', 'choices': 'us-east-1\nus-east-2\nus-west-1\nus-west-2', 'new_question': True}, {'question_name': 'EC2 Name Prefix', 'question_description': 'Name prefix for all the VMs (No uppercase, no underscores)', 'required': True, 'type': 'text', 'variable': 'ec2_name_prefix', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'Student total', 'question_description': 'Creates student_total of workbenches for the workshop', 'required': True, 'type': 'integer', 'variable': 'student_total', 'min': 1, 'max': 15, 'default': 1, 'choices': '', 'new_question': True}, {'question_name': 'Workshop type', 'question_description': 'Set the right workshop type (like network, rhel or f5)', 'required': True, 'type': 'multiplechoice', 'variable': 'workshop_type', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'network', 'isDefault': False, 'id': 0}, {'choice': 'rhel', 'isDefault': False, 'id': 1}, {'choice': 'rhel_90', 'isDefault': False, 'id': 2}, {'choice': 'security', 'isDefault': False, 'id': 3}, {'choice': 'smart_mgmt', 'isDefault': True, 'id': 4}, {'choice': 'windows', 'isDefault': False, 'id': 5}], 'new_question': False, 'default': 'smart_mgmt', 'choices': 'network\nrhel\nrhel_90\nsecurity\nsmart_mgmt\nwindows'}, {'question_name': 'DNS Type', 'question_description': 'Turn DNS on for control nodes, and set to type in valid_dns_type', 'required': True, 'type': 'text', 'variable': 'dns_type', 'min': 1, 'max': 1024, 'default': 'aws', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'Admin password', 'question_description': 'Password for Ansible control node', 'required': True, 'type': 'password', 'variable': 'admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Workshop DNS zone', 'question_description': 'Sets the Route53 DNS zone to use for Amazon Web Services', 'required': True, 'type': 'text', 'variable': 'workshop_dns_zone', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'Deploy Automation Hub', 'question_description': 'Deploy a Private Automation Hub', 'required': False, 'type': 'multiplechoice', 'variable': 'automation_hub', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}, {'question_name': 'Automation Hub password', 'question_description': 'Private Automation Hub password', 'required': False, 'type': 'password', 'variable': 'automationhub_admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Install VSCode Server', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'code_server', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': True, 'id': 0}, {'choice': 'false', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'true', 'choices': 'true\nfalse'}, {'question_name': 'XRDP', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'xrdp', 'min': 0, 'max': 1024, 'default': 'false', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'Controller Install', 'question_description': 'Automatically installs Tower to control node', 'required': True, 'type': 'multiplechoice', 'variable': 'controllerinstall', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': True, 'id': 0}, {'choice': 'false', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'true', 'choices': 'true\nfalse'}, {'question_name': 'Developer mode', 'question_description': 'Forces ansible.workshops collection to install latest edits every time', 'required': True, 'type': 'multiplechoice', 'variable': 'developer_mode', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': True, 'id': 0}, {'choice': 'false', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'true', 'choices': 'true\nfalse'}, {'question_name': 'Workshop or playground', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'provision_mode', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'workshop', 'isDefault': True, 'id': 0}, {'choice': 'playground', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'workshop', 'choices': 'workshop\nplayground'}, {'question_name': 'RHEL7 or RHEL8 (required for smart_mgmt)', 'question_description': 'Select rhel7 or rhel8 client nodes', 'required': False, 'type': 'multiplechoice', 'variable': 'rhel', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'rhel7', 'isDefault': False, 'id': 0}, {'choice': 'rhel8', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': '', 'choices': 'rhel7\nrhel8'}, {'question_name': 'CentOS7 Nodes (required for smart_mgmt)', 'question_description': 'Choice of centos7 nodes refer to https://wiki.centos.org/Cloud/AWS for available minor releases e.g. centos78', 'required': False, 'type': 'multiplechoice', 'variable': 'centos7', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'centos78', 'isDefault': False, 'id': 0}, {'choice': 'centos79', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': '', 'choices': 'centos78\ncentos79'}, {'question_name': 'Prebuild', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'pre_build', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}]}
+
+  - name: "AWS Teardown"
+    description: "Teardown AWS Open Environment"
+    organization: "Default"
+    project: "Ansible Workshops"
+    inventory: "AWS Open Environment"
+    playbook: "provisioner/teardown_lab.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "AWS Open Environment"
+      - "Base64 Manifest"
+      - "Red Hat Credential"
+      - "Red Hat Offline Token"
+    concurrent_jobs_enabled: "True"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "True"
+    ask_variables_on_launch: "True"
+    extra_vars:
+      autolicense: true
+      controller_install_command: ./setup.sh -e gpgcheck=0
+      create_login_page: true
+      ec2_xtra:
+        centos78:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.8*x86_64
+          os_type: linux
+          owners: 723450883993
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        centos79:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.9*x86_64
+          os_type: linux
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        private_automation_hub:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        rhel68:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-6.8_HVM_GA*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel7:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-7.9_HVM*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel8:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: t3.micro
+          username: ec2-user
+        rhel8-tower:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        satellite:
+          architecture: x86_64
+          disk_iops: 4000
+          disk_space: 500
+          disk_throughput: 375
+          disk_volume_type: gp3
+          filter: Satellite 6.10*
+          os_type: linux
+          owners: 723450883993
+          size: r5a.xlarge
+          username: ec2-user
+      ee_default_image: !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      ee_images:
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-29-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-minimal-rhel8:latest'
+      ee_registry_name: registry.redhat.io
+      ibm_community_grid: false
+      tower_node_aws_api_access: true
+    execution_environment: "workshop_ee"
+    survey_enabled: True
+    survey_spec: {'name': '', 'description': '', 'spec': [{'question_name': 'EC2 Region', 'question_description': 'Region where the nodes will live', 'required': True, 'type': 'multiplechoice', 'variable': 'ec2_region', 'min': 0, 'max': 1024, 'default': 'us-east-1', 'choices': 'us-east-1\nus-east-2\nus-west-1\nus-west-2', 'new_question': True}, {'question_name': 'EC2 Name Prefix', 'question_description': 'Name prefix for all the VMs (No uppercase, no underscores)', 'required': True, 'type': 'text', 'variable': 'ec2_name_prefix', 'min': 0, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Student total', 'question_description': 'Creates student_total of workbenches for the workshop', 'required': True, 'type': 'integer', 'variable': 'student_total', 'min': 1, 'max': 15, 'default': 1, 'choices': '', 'new_question': True}, {'question_name': 'Workshop type', 'question_description': 'Set the right workshop type (like network, rhel or f5)', 'required': True, 'type': 'multiplechoice', 'variable': 'workshop_type', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'network', 'isDefault': False, 'id': 0}, {'choice': 'rhel', 'isDefault': False, 'id': 1}, {'choice': 'security', 'isDefault': False, 'id': 2}, {'choice': 'windows', 'isDefault': False, 'id': 3}, {'choice': 'rhel_90', 'isDefault': False, 'id': 4}, {'choice': 'smart_mgmt', 'isDefault': True, 'id': 5}], 'new_question': False, 'default': 'smart_mgmt', 'choices': 'network\nrhel\nsecurity\nwindows\nrhel_90\nsmart_mgmt'}, {'question_name': 'DNS Type', 'question_description': 'Turn DNS on for control nodes, and set to type in valid_dns_type', 'required': True, 'type': 'text', 'variable': 'dns_type', 'min': 1, 'max': 1024, 'default': 'aws', 'choices': '', 'new_question': True}, {'question_name': 'Admin password', 'question_description': 'Password for Ansible control node', 'required': True, 'type': 'password', 'variable': 'admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Route53 DNS Zone', 'question_description': 'Sets the Route53 DNS zone to use for Amazon Web Services', 'required': True, 'type': 'text', 'variable': 'workshop_dns_zone', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'Deploy Automation Hub', 'question_description': 'Deploy a Private Automation Hub', 'required': False, 'type': 'multiplechoice', 'variable': 'automation_hub', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}, {'question_name': 'Automation Hub password', 'question_description': 'Private Automation Hub password', 'required': False, 'type': 'password', 'variable': 'automationhub_admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Install VSCode Server', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'code_server', 'min': 0, 'max': 1024, 'default': 'true', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'XRDP', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'xrdp', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}, {'question_name': 'Controller Install', 'question_description': 'Automatically installs Tower to control node', 'required': True, 'type': 'multiplechoice', 'variable': 'controllerinstall', 'min': 0, 'max': 1024, 'default': 'true', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'Developer mode', 'question_description': 'Forces ansible.workshops collection to install latest edits every time', 'required': True, 'type': 'multiplechoice', 'variable': 'developer_mode', 'min': 0, 'max': 1024, 'default': 'true', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'Workshop or playground', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'provision_mode', 'min': 0, 'max': 1024, 'default': 'workshop', 'choices': 'workshop\nplayground', 'new_question': True}, {'question_name': 'RHEL7 or RHEL8 (required for smart_mgmt)', 'question_description': 'Select rhel7 or rhel8 client nodes', 'required': False, 'type': 'multiplechoice', 'variable': 'rhel', 'min': 0, 'max': 1024, 'default': '', 'choices': 'rhel7\nrhel8', 'new_question': True}, {'question_name': 'CentOS7 Nodes (required for smart_mgmt)', 'question_description': 'Choice of centos7 nodes refer to https://wiki.centos.org/Cloud/AWS for available minor releases e.g. centos78', 'required': False, 'type': 'multiplechoice', 'variable': 'centos7', 'min': 0, 'max': 1024, 'default': '', 'choices': 'centos78\ncentos79', 'new_question': True}, {'question_name': 'Prebuild', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'pre_build', 'min': 0, 'max': 1024, 'default': 'false', 'choices': 'true\nfalse', 'new_question': True}]}
+
+  - name: "AMI Permissions"
+    description: ""
+    organization: "Default"
+    project: "Home Lab"
+    inventory: "AWS Open Environment"
+    playbook: "amipermissions.yml"
+    job_type: "run"
+    fact_caching_enabled: "False"
+    credentials:
+      - "AWS Personal Environment"
+    concurrent_jobs_enabled: "False"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "False"
+    ask_variables_on_launch: "False"
+    execution_environment: "__omit_place_holder__8096815096a479612e90978bd3fb1c6935e34bdd"
+    survey_enabled: True
+    survey_spec: {'name': '', 'description': '', 'spec': [{'question_name': 'Open Environment Account ID', 'question_description': '', 'required': True, 'type': 'text', 'variable': 'user_ids', 'min': 1, 'max': 1024, 'default': "['123456789012']", 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}]}
+
+  - name: "AWS Resources"
+    description: "Provision all resources EXCEPT for EC2 instances"
+    organization: "Default"
+    project: "Home Lab"
+    inventory: "AWS Open Environment"
+    playbook: "ec2_resources.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "AWS Open Environment"
+    concurrent_jobs_enabled: "True"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "True"
+    ask_variables_on_launch: "False"
+    extra_vars:
+      ec2_az: !unsafe '{{ec2_region}}a'
+      ec2_network_vpc2: 172.18.0.0/16
+      ec2_subnet: 172.16.0.0/16
+      ec2_subnet2: 172.17.0.0/16
+      ec2_wait: true
+      ssh_port: 22
+    execution_environment: "workshop_ee"
+    survey_enabled: True
+    survey_spec: {'name': '', 'description': '', 'spec': [{'question_name': 'EC2 Region', 'question_description': 'Region where the resources will live', 'required': True, 'type': 'multiplechoice', 'variable': 'ec2_region', 'min': 1, 'max': 1024, 'default': 'us-east-1', 'choices': 'us-east-1\nus-east-2\nus-west-1\nus-west-2', 'new_question': True}, {'question_name': 'EC2 Name Prefix', 'question_description': 'Name prefix for all resources (No uppercase, no underscores)', 'required': True, 'type': 'text', 'variable': 'ec2_name_prefix', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'DNS Type', 'question_description': 'Turn DNS on for nodes, and set to type in valid_dns_type', 'required': True, 'type': 'text', 'variable': 'dns_type', 'min': 1, 'max': 1024, 'default': 'aws', 'choices': '', 'new_question': True}, {'question_name': 'Workshop DNS zone', 'question_description': 'Sets the Route53 DNS zone to use for Amazon Web Services', 'required': True, 'type': 'text', 'variable': 'workshop_dns_zone', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}]}
+
+  - name: "Pub AWS Provisioner"
+    description: "AWS Open Environment Provisioner"
+    organization: "Default"
+    project: "Public Ansible Workshops"
+    inventory: "AWS Open Environment"
+    playbook: "provisioner/provision_lab.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "AWS Open Environment"
+      - "Personal Offline Token"
+      - "Personal Red Hat Credentials"
+    concurrent_jobs_enabled: "True"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "True"
+    ask_variables_on_launch: "True"
+    extra_vars:
+      autolicense: true
+      controller_install_command: ./setup.sh -e gpgcheck=0
+      create_login_page: true
+      ec2_xtra:
+        centos78:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.8*x86_64
+          os_type: linux
+          owners: 723450883993
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        centos79:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.9*x86_64
+          os_type: linux
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        private_automation_hub:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        rhel68:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-6.8_HVM_GA*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel7:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-7.9_HVM*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel8:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: t3.micro
+          username: ec2-user
+        rhel8-tower:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        satellite:
+          architecture: x86_64
+          disk_iops: 4000
+          disk_space: 500
+          disk_throughput: 375
+          disk_volume_type: gp3
+          filter: Satellite 6.11*
+          os_type: linux
+          owners: 723450883993
+          size: r5a.xlarge
+          username: ec2-user
+      ee_default_image: !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      ee_images:
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-29-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-minimal-rhel8:latest'
+      ee_registry_name: registry.redhat.io
+      ibm_community_grid: false
+      tower_node_aws_api_access: true
+    execution_environment: "workshop_ee"
+    survey_enabled: True
+    survey_spec: {'name': '', 'description': '', 'spec': [{'question_name': 'EC2 Region', 'question_description': 'Region where the nodes will live', 'required': True, 'type': 'multiplechoice', 'variable': 'ec2_region', 'min': 0, 'max': 1024, 'default': 'us-east-1', 'choices': 'us-east-1\nus-east-2\nus-west-1\nus-west-2', 'new_question': True}, {'question_name': 'EC2 Name Prefix', 'question_description': 'Name prefix for all the VMs (No uppercase, no underscores)', 'required': True, 'type': 'text', 'variable': 'ec2_name_prefix', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'Student total', 'question_description': 'Creates student_total of workbenches for the workshop', 'required': True, 'type': 'integer', 'variable': 'student_total', 'min': 1, 'max': 15, 'default': 1, 'choices': '', 'new_question': True}, {'question_name': 'Workshop type', 'question_description': 'Set the right workshop type (like network, rhel or f5)', 'required': True, 'type': 'multiplechoice', 'variable': 'workshop_type', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'network', 'isDefault': False, 'id': 0}, {'choice': 'rhel', 'isDefault': False, 'id': 1}, {'choice': 'security', 'isDefault': False, 'id': 2}, {'choice': 'windows', 'isDefault': False, 'id': 3}, {'choice': 'rhel_90', 'isDefault': False, 'id': 4}, {'choice': 'smart_mgmt', 'isDefault': True, 'id': 5}, {'choice': 'demo', 'isDefault': False, 'id': 6}, {'choice': 'devops', 'isDefault': False, 'id': 7}, {'choice': "f5 don't use", 'isDefault': False, 'id': 8}, {'choice': 'middleware', 'isDefault': False, 'id': 9}, {'choice': '', 'isDefault': False, 'id': 10}], 'new_question': False, 'default': 'smart_mgmt', 'choices': "network\nrhel\nsecurity\nwindows\nrhel_90\nsmart_mgmt\ndemo\ndevops\nf5 don't use\nmiddleware"}, {'question_name': 'Workshop, playground, or demo', 'question_description': '', 'required': False, 'type': 'multiplechoice', 'variable': 'provision_mode', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'workshop', 'isDefault': True, 'id': 0}, {'choice': 'playground', 'isDefault': False, 'id': 1}, {'choice': 'demo', 'isDefault': False, 'id': 2}], 'new_question': False, 'default': 'workshop', 'choices': 'workshop\nplayground\ndemo'}, {'question_name': 'if provision_mode is set to demo select which demos (WIP)', 'question_description': "Let's you skip a lot of the pre-work in workshops so you can demo the product faster", 'required': False, 'type': 'multiplechoice', 'variable': 'demo', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'all', 'isDefault': False, 'id': 0}, {'choice': 'aws_provision_vm', 'isDefault': False, 'id': 1}, {'choice': 'azure_mysql_server', 'isDefault': False, 'id': 2}, {'choice': 'azure_provision_vm', 'isDefault': False, 'id': 3}, {'choice': 'chocolatey_app_install', 'isDefault': False, 'id': 4}, {'choice': 'chocolatey_config', 'isDefault': False, 'id': 5}, {'choice': 'chocolatey_features', 'isDefault': False, 'id': 6}, {'choice': 'deploy_application', 'isDefault': False, 'id': 7}, {'choice': 'fact_scan', 'isDefault': False, 'id': 8}, {'choice': 'debug_info', 'isDefault': False, 'id': 9}, {'choice': 'grant_sudo', 'isDefault': False, 'id': 10}, {'choice': 'patching', 'isDefault': False, 'id': 11}, {'choice': 'insights', 'isDefault': False, 'id': 12}, {'choice': 'turn_off_community_grid', 'isDefault': False, 'id': 13}, {'choice': 'windows_regedit_legal_notice', 'isDefault': False, 'id': 14}, {'choice': 'windows_iis', 'isDefault': False, 'id': 15}, {'choice': 'configlet_logging', 'isDefault': False, 'id': 16}, {'choice': 'configlet_ntp', 'isDefault': False, 'id': 17}, {'choice': 'configlet_vtyacl', 'isDefault': False, 'id': 18}, {'choice': 'f5_bigip_workflow', 'isDefault': False, 'id': 19}, {'choice': 'openscap', 'isDefault': False, 'id': 20}, {'choice': 'hardening', 'isDefault': False, 'id': 21}, {'choice': 'developer_report', 'isDefault': False, 'id': 22}], 'new_question': False, 'default': '', 'choices': 'all\naws_provision_vm\nazure_mysql_server\nazure_provision_vm\nchocolatey_app_install\nchocolatey_config\nchocolatey_features\ndeploy_application\nfact_scan\ndebug_info\ngrant_sudo\npatching\ninsights\nturn_off_community_grid\nwindows_regedit_legal_notice\nwindows_iis\nconfiglet_logging\nconfiglet_ntp\nconfiglet_vtyacl\nf5_bigip_workflow\nopenscap\nhardening\ndeveloper_report'}, {'question_name': 'If network workshop (remember to subscribe in marketplace)', 'question_description': "If you chose workshop type 'network'", 'required': False, 'type': 'multiplechoice', 'variable': 'network_type', 'min': 0, 'max': 1024, 'default': '', 'choices': 'multivendor\narista\ncisco\njuniper', 'new_question': True}, {'question_name': 'If security workshop (remember to subscribe in marketplace)', 'question_description': '', 'required': False, 'type': 'multiplechoice', 'variable': 'security_console', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'qradar', 'isDefault': False, 'id': 0}, {'choice': 'splunk', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': '', 'choices': 'qradar\nsplunk'}, {'question_name': 'Security workshop Windows password', 'question_description': '', 'required': False, 'type': 'password', 'variable': 'windows_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'if Windows provision extra instance', 'question_description': 'creates 2 windows instances per student instead of default 1', 'required': False, 'type': 'multiplechoice', 'variable': 'doubleup', 'min': 0, 'max': 1024, 'default': 'false', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'DNS Type', 'question_description': 'Turn DNS on for control nodes, and set to type in valid_dns_type', 'required': True, 'type': 'text', 'variable': 'dns_type', 'min': 1, 'max': 1024, 'default': 'aws', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'Admin password', 'question_description': 'Password for Ansible control node', 'required': True, 'type': 'password', 'variable': 'admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Route53 DNS Zone', 'question_description': 'Sets the Route53 DNS zone to use for Amazon Web Services', 'required': True, 'type': 'text', 'variable': 'workshop_dns_zone', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'Deploy Automation Hub', 'question_description': 'Deploy a Private Automation Hub', 'required': False, 'type': 'multiplechoice', 'variable': 'automation_hub', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}, {'question_name': 'Automation Hub password', 'question_description': 'Private Automation Hub password', 'required': False, 'type': 'password', 'variable': 'automationhub_admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Install VSCode Server', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'code_server', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': True, 'id': 0}, {'choice': 'false', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'true', 'choices': 'true\nfalse'}, {'question_name': 'XRDP', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'xrdp', 'min': 0, 'max': 1024, 'default': 'false', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'Controller Install', 'question_description': 'Automatically installs Tower to control node', 'required': True, 'type': 'multiplechoice', 'variable': 'controllerinstall', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': True, 'id': 0}, {'choice': 'false', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'true', 'choices': 'true\nfalse'}, {'question_name': 'Create control node cluster', 'question_description': 'Create control node cluster', 'required': False, 'type': 'multiplechoice', 'variable': 'create_cluster', 'min': 0, 'max': 1024, 'default': 'false', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'Developer mode', 'question_description': 'Forces ansible.workshops collection to install latest edits every time', 'required': True, 'type': 'multiplechoice', 'variable': 'developer_mode', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': True, 'id': 0}, {'choice': 'false', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'true', 'choices': 'true\nfalse'}, {'question_name': 'RHEL7 or RHEL8 (required for smart_mgmt)', 'question_description': 'Select rhel7 or rhel8 client nodes', 'required': False, 'type': 'multiplechoice', 'variable': 'rhel', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'rhel7', 'isDefault': False, 'id': 0}, {'choice': 'rhel8', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': '', 'choices': 'rhel7\nrhel8'}, {'question_name': 'CentOS7 Nodes (required for smart_mgmt)', 'question_description': 'Choice of centos7 nodes refer to https://wiki.centos.org/Cloud/AWS for available minor releases e.g. centos78', 'required': False, 'type': 'multiplechoice', 'variable': 'centos7', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'centos78', 'isDefault': False, 'id': 0}, {'choice': 'centos79', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': '', 'choices': 'centos78\ncentos79'}, {'question_name': 'Prebuild', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'pre_build', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}, {'question_name': 'Manifest Download URL', 'question_description': '', 'required': False, 'type': 'multiplechoice', 'variable': 'manifest_download_url', 'min': 0, 'max': 1024, 'default': '', 'choices': 'https://api.access.redhat.com/management/v1/allocations/', 'new_question': True}, {'question_name': 'Manifest UUID', 'question_description': '', 'required': False, 'type': 'text', 'variable': 'manifest_uuid', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}]}
+
+  - name: "Pub AWS Teardown"
+    description: "Teardown AWS Open Environment"
+    organization: "Default"
+    project: "Public Ansible Workshops"
+    inventory: "AWS Open Environment"
+    playbook: "provisioner/teardown_lab.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "AWS Open Environment"
+      - "Personal Offline Token"
+      - "Personal Red Hat Credentials"
+    concurrent_jobs_enabled: "True"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "True"
+    ask_variables_on_launch: "True"
+    extra_vars:
+      autolicense: true
+      controller_install_command: ./setup.sh -e gpgcheck=0
+      create_login_page: true
+      ec2_xtra:
+        centos78:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.8*x86_64
+          os_type: linux
+          owners: 723450883993
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        centos79:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.9*x86_64
+          os_type: linux
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        private_automation_hub:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        rhel68:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-6.8_HVM_GA*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel7:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-7.9_HVM*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel8:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: t3.micro
+          username: ec2-user
+        rhel8-tower:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        satellite:
+          architecture: x86_64
+          disk_iops: 4000
+          disk_space: 500
+          disk_throughput: 375
+          disk_volume_type: gp3
+          filter: Satellite 6.10*
+          os_type: linux
+          owners: 723450883993
+          size: r5a.xlarge
+          username: ec2-user
+      ee_default_image: !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      ee_images:
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-29-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-minimal-rhel8:latest'
+      ee_registry_name: registry.redhat.io
+      ibm_community_grid: false
+      tower_node_aws_api_access: true
+    execution_environment: "workshop_ee"
+    survey_enabled: True
+    survey_spec: {'name': '', 'description': '', 'spec': [{'question_name': 'EC2 Region', 'question_description': 'Region where the nodes will live', 'required': True, 'type': 'multiplechoice', 'variable': 'ec2_region', 'min': 0, 'max': 1024, 'default': 'us-east-1', 'choices': 'us-east-1\nus-east-2\nus-west-1\nus-west-2', 'new_question': True}, {'question_name': 'EC2 Name Prefix', 'question_description': 'Name prefix for all the VMs (No uppercase, no underscores)', 'required': True, 'type': 'text', 'variable': 'ec2_name_prefix', 'min': 0, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Student total', 'question_description': 'Creates student_total of workbenches for the workshop', 'required': True, 'type': 'integer', 'variable': 'student_total', 'min': 1, 'max': 15, 'default': 1, 'choices': '', 'new_question': True}, {'question_name': 'Workshop type', 'question_description': 'Set the right workshop type (like network, rhel or f5)', 'required': True, 'type': 'multiplechoice', 'variable': 'workshop_type', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'network', 'isDefault': False, 'id': 0}, {'choice': 'rhel', 'isDefault': False, 'id': 1}, {'choice': 'security', 'isDefault': False, 'id': 2}, {'choice': 'windows', 'isDefault': False, 'id': 3}, {'choice': 'rhel_90', 'isDefault': False, 'id': 4}, {'choice': 'smart_mgmt', 'isDefault': True, 'id': 5}, {'choice': 'demo', 'isDefault': False, 'id': 6}], 'new_question': False, 'default': 'smart_mgmt', 'choices': 'network\nrhel\nsecurity\nwindows\nrhel_90\nsmart_mgmt\ndemo'}, {'question_name': 'If network workshop (remember to subscribe in marketplace)', 'question_description': "If you chose workshop type 'network'", 'required': False, 'type': 'multiplechoice', 'variable': 'network_type', 'min': 0, 'max': 1024, 'default': '', 'choices': 'multivendor\narista\ncisco\njuniper', 'new_question': True}, {'question_name': 'If security workshop (remember to subscribe in marketplace)', 'question_description': '', 'required': False, 'type': 'multiplechoice', 'variable': 'security_console', 'min': 0, 'max': 1024, 'default': '', 'choices': 'qradar\nsplunk', 'new_question': True}, {'question_name': 'Windows password for security workshop', 'question_description': '', 'required': False, 'type': 'password', 'variable': 'windows_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'DNS Type', 'question_description': 'Turn DNS on for control nodes, and set to type in valid_dns_type', 'required': True, 'type': 'text', 'variable': 'dns_type', 'min': 1, 'max': 1024, 'default': 'aws', 'choices': '', 'new_question': True}, {'question_name': 'Admin password', 'question_description': 'Password for Ansible control node', 'required': True, 'type': 'password', 'variable': 'admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Workshop DNS zone', 'question_description': 'Sets the Route53 DNS zone to use for Amazon Web Services', 'required': True, 'type': 'text', 'variable': 'workshop_dns_zone', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Deploy Automation Hub', 'question_description': 'Deploy a Private Automation Hub', 'required': False, 'type': 'multiplechoice', 'variable': 'automation_hub', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}, {'question_name': 'Automation Hub password', 'question_description': 'Private Automation Hub password', 'required': False, 'type': 'password', 'variable': 'automationhub_admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Install VSCode Server', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'code_server', 'min': 0, 'max': 1024, 'default': 'true', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'XRDP', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'xrdp', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}, {'question_name': 'Controller Install', 'question_description': 'Automatically installs Tower to control node', 'required': True, 'type': 'multiplechoice', 'variable': 'controllerinstall', 'min': 0, 'max': 1024, 'default': 'true', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'Developer mode', 'question_description': 'Forces ansible.workshops collection to install latest edits every time', 'required': True, 'type': 'multiplechoice', 'variable': 'developer_mode', 'min': 0, 'max': 1024, 'default': 'true', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'Workshop or playground', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'provision_mode', 'min': 0, 'max': 1024, 'default': 'workshop', 'choices': 'workshop\nplayground', 'new_question': True}, {'question_name': 'RHEL7 or RHEL8 (required for smart_mgmt)', 'question_description': 'Select rhel7 or rhel8 client nodes', 'required': False, 'type': 'multiplechoice', 'variable': 'rhel', 'min': 0, 'max': 1024, 'default': '', 'choices': 'rhel7\nrhel8', 'new_question': True}, {'question_name': 'CentOS7 Nodes (required for smart_mgmt)', 'question_description': 'Choice of centos7 nodes refer to https://wiki.centos.org/Cloud/AWS for available minor releases e.g. centos78', 'required': False, 'type': 'multiplechoice', 'variable': 'centos7', 'min': 0, 'max': 1024, 'default': '', 'choices': 'centos78\ncentos79', 'new_question': True}, {'question_name': 'Prebuild', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'pre_build', 'min': 0, 'max': 1024, 'default': 'false', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'Manifest URL (See description)', 'question_description': 'https://api.access.redhat.com/management/v1/allocations/<manifest uuid>', 'required': False, 'type': 'text', 'variable': 'manifest_download_url', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}]}
+
+  - name: "Pub AWS Provisioner survey testing"
+    description: "AWS Open Environment Provisioner"
+    organization: "Default"
+    project: "Public Ansible Workshops"
+    inventory: "AWS Open Environment"
+    playbook: "provisioner/provision_lab.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "AWS Open Environment"
+      - "Base64 Manifest"
+      - "Red Hat Credential"
+      - "Red Hat Offline Token"
+    concurrent_jobs_enabled: "True"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "True"
+    ask_variables_on_launch: "True"
+    extra_vars:
+      autolicense: true
+      controller_install_command: ./setup.sh -e gpgcheck=0
+      create_login_page: true
+      ec2_xtra:
+        centos78:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.8*x86_64
+          os_type: linux
+          owners: 723450883993
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        centos79:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.9*x86_64
+          os_type: linux
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        private_automation_hub:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        rhel68:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-6.8_HVM_GA*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel7:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-7.9_HVM*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel8:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: t3.micro
+          username: ec2-user
+        rhel8-tower:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        satellite:
+          architecture: x86_64
+          disk_iops: 4000
+          disk_space: 500
+          disk_throughput: 375
+          disk_volume_type: gp3
+          filter: Satellite 6.10*
+          os_type: linux
+          owners: 723450883993
+          size: r5a.xlarge
+          username: ec2-user
+      ee_default_image: !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      ee_images:
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-29-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-minimal-rhel8:latest'
+      ee_registry_name: registry.redhat.io
+      ibm_community_grid: false
+      tower_node_aws_api_access: true
+    execution_environment: "workshop_ee"
+    survey_enabled: True
+    survey_spec: {'name': '', 'description': '', 'spec': [{'question_name': 'EC2 Region', 'question_description': 'Region where the nodes will live', 'required': True, 'type': 'multiplechoice', 'variable': 'ec2_region', 'min': 0, 'max': 1024, 'default': 'us-east-1', 'choices': 'us-east-1\nus-east-2\nus-west-1\nus-west-2', 'new_question': True}, {'question_name': 'EC2 Name Prefix', 'question_description': 'Name prefix for all the VMs (No uppercase, no underscores)', 'required': True, 'type': 'text', 'variable': 'ec2_name_prefix', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'Student total', 'question_description': 'Creates student_total of workbenches for the workshop', 'required': True, 'type': 'integer', 'variable': 'student_total', 'min': 1, 'max': 15, 'default': 1, 'choices': '', 'new_question': True}, {'question_name': 'Provisioning mode', 'question_description': '', 'required': False, 'type': 'multiplechoice', 'variable': 'provision_mode', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'workshop', 'isDefault': True, 'id': 0}, {'choice': 'demo', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'workshop', 'choices': 'workshop\ndemo'}, {'question_name': 'Workshop type', 'question_description': 'Set the right workshop type (like network, rhel or f5)', 'required': True, 'type': 'multiplechoice', 'variable': 'workshop_type', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'network', 'isDefault': False, 'id': 0}, {'choice': 'rhel', 'isDefault': False, 'id': 1}, {'choice': 'security', 'isDefault': False, 'id': 2}, {'choice': 'windows', 'isDefault': False, 'id': 3}, {'choice': 'rhel_90', 'isDefault': False, 'id': 4}, {'choice': 'smart_mgmt', 'isDefault': True, 'id': 5}, {'choice': 'devops', 'isDefault': False, 'id': 6}, {'choice': 'middleware', 'isDefault': False, 'id': 7}, {'choice': '', 'isDefault': False, 'id': 8}, {'choice': '', 'isDefault': False, 'id': 9}], 'new_question': False, 'default': 'smart_mgmt', 'choices': 'network\nrhel\nsecurity\nwindows\nrhel_90\nsmart_mgmt\ndevops\nmiddleware'}, {'question_name': 'If network workshop (remember to subscribe in marketplace)', 'question_description': "If you chose workshop type 'network'", 'required': False, 'type': 'multiplechoice', 'variable': 'network_type', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'multivendor', 'isDefault': False, 'id': 0}, {'choice': 'arista', 'isDefault': False, 'id': 1}, {'choice': 'cisco', 'isDefault': False, 'id': 2}, {'choice': 'juniper', 'isDefault': False, 'id': 3}], 'new_question': False, 'default': '', 'choices': 'multivendor\narista\ncisco\njuniper'}, {'question_name': 'If security workshop (remember to subscribe in marketplace)', 'question_description': '', 'required': False, 'type': 'multiplechoice', 'variable': 'security_console', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'qradar', 'isDefault': False, 'id': 0}, {'choice': 'splunk', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': '', 'choices': 'qradar\nsplunk'}, {'question_name': 'Security workshop Windows password', 'question_description': '', 'required': False, 'type': 'password', 'variable': 'windows_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'if Windows provision extra instance', 'question_description': 'creates 2 windows instances per student instead of default 1', 'required': False, 'type': 'multiplechoice', 'variable': 'doubleup', 'min': 0, 'max': 1024, 'default': 'false', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'DNS Type', 'question_description': 'Turn DNS on for control nodes, and set to type in valid_dns_type', 'required': True, 'type': 'text', 'variable': 'dns_type', 'min': 1, 'max': 1024, 'default': 'aws', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'Admin password', 'question_description': 'Password for Ansible control node', 'required': True, 'type': 'password', 'variable': 'admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Workshop DNS zone', 'question_description': 'Sets the Route53 DNS zone to use for Amazon Web Services', 'required': True, 'type': 'text', 'variable': 'workshop_dns_zone', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Deploy Automation Hub', 'question_description': 'Deploy a Private Automation Hub', 'required': False, 'type': 'multiplechoice', 'variable': 'automation_hub', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}, {'question_name': 'Automation Hub password', 'question_description': 'Private Automation Hub password', 'required': False, 'type': 'password', 'variable': 'automationhub_admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Install VSCode Server', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'code_server', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': True, 'id': 0}, {'choice': 'false', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'true', 'choices': 'true\nfalse'}, {'question_name': 'XRDP', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'xrdp', 'min': 0, 'max': 1024, 'default': 'false', 'choices': 'true\nfalse', 'new_question': True}, {'question_name': 'Controller Install', 'question_description': 'Automatically installs Tower to control node', 'required': True, 'type': 'multiplechoice', 'variable': 'controllerinstall', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': True, 'id': 0}, {'choice': 'false', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'true', 'choices': 'true\nfalse'}, {'question_name': 'Developer mode', 'question_description': 'Forces ansible.workshops collection to install latest edits every time', 'required': True, 'type': 'multiplechoice', 'variable': 'developer_mode', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': True, 'id': 0}, {'choice': 'false', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': 'true', 'choices': 'true\nfalse'}, {'question_name': 'RHEL7 or RHEL8 (required for smart_mgmt)', 'question_description': 'Select rhel7 or rhel8 client nodes', 'required': False, 'type': 'multiplechoice', 'variable': 'rhel', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'rhel7', 'isDefault': False, 'id': 0}, {'choice': 'rhel8', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': '', 'choices': 'rhel7\nrhel8'}, {'question_name': 'CentOS7 Nodes (required for smart_mgmt)', 'question_description': 'Choice of centos7 nodes refer to https://wiki.centos.org/Cloud/AWS for available minor releases e.g. centos78', 'required': False, 'type': 'multiplechoice', 'variable': 'centos7', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'centos78', 'isDefault': False, 'id': 0}, {'choice': 'centos79', 'isDefault': False, 'id': 1}], 'new_question': False, 'default': '', 'choices': 'centos78\ncentos79'}, {'question_name': 'Prebuild', 'question_description': '', 'required': True, 'type': 'multiplechoice', 'variable': 'pre_build', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}]}
+
+  - name: "Pub AWS Teardown survey testing"
+    description: "Teardown AWS Open Environment"
+    organization: "Default"
+    project: "Public Ansible Workshops"
+    inventory: "AWS Open Environment"
+    playbook: "provisioner/teardown_lab.yml"
+    job_type: "run"
+    fact_caching_enabled: "True"
+    credentials:
+      - "AWS Open Environment"
+      - "Base64 Manifest"
+      - "Red Hat Credential"
+      - "Red Hat Offline Token"
+    concurrent_jobs_enabled: "True"
+    ask_scm_branch_on_launch: "False"
+    ask_tags_on_launch: "False"
+    ask_verbosity_on_launch: "True"
+    ask_variables_on_launch: "True"
+    extra_vars:
+      autolicense: true
+      controller_install_command: ./setup.sh -e gpgcheck=0
+      create_login_page: true
+      ec2_xtra:
+        centos78:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.8*x86_64
+          os_type: linux
+          owners: 723450883993
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        centos79:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: CentOS*7.9*x86_64
+          os_type: linux
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: centos
+        private_automation_hub:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        rhel68:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-6.8_HVM_GA*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel7:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-7.9_HVM*
+          os_type: linux
+          owners: 309956199498
+          python_interpreter: /usr/bin/python
+          size: t2.medium
+          username: ec2-user
+        rhel8:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 10
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: t3.micro
+          username: ec2-user
+        rhel8-tower:
+          architecture: x86_64
+          disk_iops: 3000
+          disk_space: 40
+          disk_throughput: 125
+          disk_volume_type: gp3
+          filter: RHEL-8*HVM-*Hourly*
+          os_type: linux
+          owners: 309956199498
+          size: m4.xlarge
+          username: ec2-user
+        satellite:
+          architecture: x86_64
+          disk_iops: 4000
+          disk_space: 500
+          disk_throughput: 375
+          disk_volume_type: gp3
+          filter: Satellite 6.10*
+          os_type: linux
+          owners: 723450883993
+          size: r5a.xlarge
+          username: ec2-user
+      ee_default_image: !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      ee_images:
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-29-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-supported-rhel8:latest'
+      - !unsafe '{{ ee_registry_name }}/ansible-automation-platform-23/ee-minimal-rhel8:latest'
+      ee_registry_name: registry.redhat.io
+      ibm_community_grid: false
+      tower_node_aws_api_access: true
+    execution_environment: "workshop_ee"
+    survey_enabled: True
+    survey_spec: {'name': '', 'description': '', 'spec': [{'question_name': 'EC2 Region', 'question_description': 'Region where the nodes will live', 'required': True, 'type': 'multiplechoice', 'variable': 'ec2_region', 'min': 0, 'max': 1024, 'default': 'us-east-1', 'choices': 'us-east-1\nus-east-2\nus-west-1\nus-west-2', 'new_question': True}, {'question_name': 'EC2 Name Prefix', 'question_description': 'Name prefix for all the VMs (No uppercase, no underscores)', 'required': True, 'type': 'text', 'variable': 'ec2_name_prefix', 'min': 0, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Student total', 'question_description': 'Creates student_total of workbenches for the workshop', 'required': True, 'type': 'integer', 'variable': 'student_total', 'min': 1, 'max': 15, 'default': 1, 'choices': '', 'new_question': True}, {'question_name': 'Workshop type', 'question_description': 'Set the right workshop type (like network, rhel or f5)', 'required': True, 'type': 'multiplechoice', 'variable': 'workshop_type', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'network', 'isDefault': False, 'id': 0}, {'choice': 'rhel', 'isDefault': False, 'id': 1}, {'choice': 'security', 'isDefault': False, 'id': 2}, {'choice': 'windows', 'isDefault': False, 'id': 3}, {'choice': 'rhel_90', 'isDefault': False, 'id': 4}, {'choice': 'smart_mgmt', 'isDefault': True, 'id': 5}], 'new_question': False, 'default': 'smart_mgmt', 'choices': 'network\nrhel\nsecurity\nwindows\nrhel_90\nsmart_mgmt'}, {'question_name': 'DNS Type', 'question_description': 'Turn DNS on for control nodes, and set to type in valid_dns_type', 'required': True, 'type': 'text', 'variable': 'dns_type', 'min': 1, 'max': 1024, 'default': 'aws', 'choices': '', 'new_question': True}, {'question_name': 'Admin password', 'question_description': 'Password for Ansible control node', 'required': True, 'type': 'password', 'variable': 'admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Windows password for security workshop', 'question_description': '', 'required': False, 'type': 'password', 'variable': 'windows_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}, {'question_name': 'Route53 DNS Zone', 'question_description': 'Sets the Route53 DNS zone to use for Amazon Web Services', 'required': True, 'type': 'text', 'variable': 'workshop_dns_zone', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}, {'question_name': 'Deploy Automation Hub', 'question_description': 'Deploy a Private Automation Hub', 'required': False, 'type': 'multiplechoice', 'variable': 'automation_hub', 'min': 0, 'max': 1024, 'formattedChoices': [{'choice': 'true', 'isDefault': False, 'id': 0}, {'choice': 'false', 'isDefault': True, 'id': 1}], 'new_question': False, 'default': 'false', 'choices': 'true\nfalse'}, {'question_name': 'Automation Hub password', 'question_description': 'Private Automation Hub password', 'required': False, 'type': 'password', 'variable': 'automationhub_admin_password', 'min': 1, 'max': 1024, 'default': '', 'choices': '', 'new_question': True}]}
+...
