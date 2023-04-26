@@ -1,6 +1,0 @@
----
-controller_inventories:
-  - name: "AWS Open Environment"
-    description: "AWS EC2 dynamic inventory"
-    organization: "Default"
-...
