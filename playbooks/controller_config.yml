@@ -10,10 +10,10 @@
       ansible.builtin.include_vars:
         dir: "../filetree_output"
 
-    - name: Include setting role
-      ansible.builtin.include_role:
-        name: infra.controller_configuration.settings
-      when: controller_settings | length is not match('0')
+    # - name: Include setting role
+    #   ansible.builtin.include_role:
+    #     name: infra.controller_configuration.settings
+    #   when: controller_settings | length is not match('0')
 
     - name: Include organization role
       ansible.builtin.include_role:
