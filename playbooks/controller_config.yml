@@ -57,7 +57,7 @@
           ansible.builtin.set_fact:
             ah_token: "{{ ah_token['token'] }}"
           when: r_ah_token['changed']
-       what needs to be done to guarantee this to work?
+      #  what needs to be done to guarantee this to work?
 
     # This block/rescue section can be useful if you get a lot of cred errors to try and auto fix
     - name: Update credentials
