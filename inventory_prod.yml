@@ -1,6 +1,11 @@
 ---
 all:
   children:
+    prod:
+      hosts:
+        127.0.0.1
+      vars:
+        connection: local
     automationcontroller:
       hosts:
         controller:
