@@ -18,9 +18,9 @@
     - name: Include organization role
       ansible.builtin.include_role:
         name: infra.controller_configuration.organizations
-      # vars:
-        # assign_galaxy_credentials_to_org: false
-        # assign_default_ee_to_org: false
+      vars:
+        assign_galaxy_credentials_to_org: true
+        assign_default_ee_to_org: false
       when: controller_organizations is defined #| length is not match('0')
 
     - name: Include labels role
@@ -109,7 +109,7 @@
       ansible.builtin.include_role:
         name: infra.controller_configuration.credentials
       vars:
-        controller_configuration_credentials_secure_logging: true
+        controller_configuration_credentials_secure_logging: false
       when: controller_credentials is defined #| length is not match('0')
 
     - name: Include credential_input_sources role
@@ -132,10 +132,10 @@
         name: infra.controller_configuration.organizations
       when: controller_organizations is defined #| length is not match('0')
 
-    # - name: Include projects role
-    #   ansible.builtin.include_role:
-    #     name: infra.controller_configuration.projects
-    #   when: controller_projects is defined #| length is not match('0')
+    - name: Include projects role
+      ansible.builtin.include_role:
+        name: infra.controller_configuration.projects
+      when: controller_projects is defined #| length is not match('0')
 
     - name: Include inventories role
       ansible.builtin.include_role:
@@ -166,20 +166,20 @@
         name: infra.controller_configuration.applications
       when: controller_applications is defined #| length is not match('0')
 
-    # - name: Include job_templates role
-    #   ansible.builtin.include_role:
-    #     name: infra.controller_configuration.job_templates
-    #   when: controller_templates is defined #| length is not match('0')
+    - name: Include job_templates role
+      ansible.builtin.include_role:
+        name: infra.controller_configuration.job_templates
+      when: controller_templates is defined #| length is not match('0')
 
-    # - name: Include workflow_job_templates role
-    #   ansible.builtin.include_role:
-    #     name: infra.controller_configuration.workflow_job_templates
-    #   when: controller_workflows is defined #| length is not match('0')
+    - name: Include workflow_job_templates role
+      ansible.builtin.include_role:
+        name: infra.controller_configuration.workflow_job_templates
+      when: controller_workflows is defined #| length is not match('0')
 
-    # - name: Include schedules role
-    #   ansible.builtin.include_role:
-    #     name: infra.controller_configuration.schedules
-    #   when: controller_schedules is defined #| length is not match('0')
+    - name: Include schedules role
+      ansible.builtin.include_role:
+        name: infra.controller_configuration.schedules
+      when: controller_schedules is defined #| length is not match('0')
 
     - name: Include roles role
       ansible.builtin.include_role:
