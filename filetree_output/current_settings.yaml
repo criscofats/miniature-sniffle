@@ -48,8 +48,8 @@ controller_settings:
       ALLOW_OAUTH2_FOR_EXTERNAL_USERS: false
       LOGIN_REDIRECT_OVERRIDE: 
       PENDO_TRACKING_STATE: detailed
-      CUSTOM_LOGIN_INFO: 
-      CUSTOM_LOGO: 
+      CUSTOM_LOGIN_INFO: ""
+      CUSTOM_LOGO: ""
       SOCIAL_AUTH_ORGANIZATION_MAP: null
       SOCIAL_AUTH_TEAM_MAP: null
       SOCIAL_AUTH_USER_FIELDS: null
