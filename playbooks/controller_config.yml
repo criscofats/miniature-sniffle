@@ -1,6 +1,6 @@
 ---
 - name: Playbook to configure ansible controller post installation
-  hosts: all
+  hosts: controller
   vars_files:
     - "../vaults/{{ env }}.yml"
     - "../vaults/vault"
