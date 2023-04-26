@@ -324,7 +324,7 @@ controller_templates:
     ask_tags_on_launch: "False"
     ask_verbosity_on_launch: "False"
     ask_variables_on_launch: "False"
-    execution_environment: "__omit_place_holder__8096815096a479612e90978bd3fb1c6935e34bdd"
+    execution_environment:  "Default execution environment"
     survey_enabled: True
     survey_spec: {'name': '', 'description': '', 'spec': [{'question_name': 'Open Environment Account ID', 'question_description': '', 'required': True, 'type': 'text', 'variable': 'user_ids', 'min': 1, 'max': 1024, 'default': "['123456789012']", 'choices': '', 'formattedChoices': [{'choice': '', 'isDefault': False, 'id': 0}], 'new_question': False}]}
 
