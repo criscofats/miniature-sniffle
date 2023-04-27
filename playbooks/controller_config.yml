@@ -8,7 +8,8 @@
   tasks:
     - name: Include all vars from /filetree_output
       ansible.builtin.include_vars:
-        dir: "../filetree_output"
+        # dir: "../filetree_output"
+        file: "../allassets.yml"
 
     - name: Include setting role
       ansible.builtin.include_role:
