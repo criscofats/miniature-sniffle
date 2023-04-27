@@ -19,7 +19,8 @@
         all: true
       register: export_results
 
-    - ansible.builtin.debug:
+    - name: Registering export results
+      ansible.builtin.debug:
         var: export_results
 
     - name: Export everything to file
