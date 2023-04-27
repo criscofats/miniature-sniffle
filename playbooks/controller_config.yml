@@ -67,10 +67,6 @@
       ansible.builtin.include_role:
         name: infra.controller_configuration.credential_types
       when: controller_credential_types is defined #| length is not match('0')
-      
-    - name: print key
-      ansible.builtin.debug:
-        msg: "{{ github_key }}"
 
 
     #   rescue:
