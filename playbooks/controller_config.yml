@@ -4,12 +4,13 @@
   vars_files:
     - "../vaults/{{ env }}.yml"
     - "../vaults/vault"
+    - "../allassets.yml"
   connection: local
   tasks:
-    - name: Include all vars from /filetree_output
-      ansible.builtin.include_vars:
-        # dir: "../filetree_output"
-        file: "../allassets.yml"
+    # - name: Include all vars from /filetree_output
+    #   ansible.builtin.include_vars:
+    #     dir: "../filetree_output"
+    #     file: "../allassets.yml"
 
     - name: Include setting role
       ansible.builtin.include_role:
