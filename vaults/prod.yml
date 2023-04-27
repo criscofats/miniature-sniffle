@@ -16,7 +16,10 @@ insights_password: "{{ vault_insights_password }}"
 pi_password: "{{ vault_pi_password }}"
 github_token: "{{ vault_github_token }}"
 github_key: "{{ vault_github_key }}"
+aws_personal_access_key: "{{ vault_aws_personal_access_key }}"
 aws_personal_secret: "{{ vault_aws_personal_secret }}"
+aws_open_access_key: "{{ vault_aws_open_access_key }}"
+aws_open_secret: "{{ vault_aws_open_secret }}"
 controller_validate_certs: false
 ah_validate_certs: false
 ...
