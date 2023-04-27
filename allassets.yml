@@ -1,6 +1,6 @@
 ---
-applications: []
-credential_types:
+controller_applications: []
+controller_credential_types:
 -   description: Credentials needed for AWS Open Environment Ansible workshops
     injectors:
         extra_vars:
@@ -195,7 +195,7 @@ credential_types:
         kind: cloud
         name: Red Hat Offline Token
         type: credential_type
-credentials:
+controller_credentials:
 -   credential_type:
         kind: cloud
         name: Ansible Workshop Credentials
@@ -659,7 +659,7 @@ credentials:
     organization:
         name: Default
         type: organization
-execution_environments:
+controller_execution_environments:
 -   credential:
         credential_type:
             kind: registry
@@ -772,7 +772,7 @@ execution_environments:
         type: execution_environment
     organization: null
     pull: ''
-inventory:
+controller_inventory:
 -   description: AWS EC2 dynamic inventory
     host_filter: null
     kind: ''
@@ -1501,7 +1501,7 @@ inventory:
                 "insights_updated": "2023-04-20T01:45:16.305014+00:00"}'
         labels: []
     variables: '---'
-inventory_sources:
+controller_inventory_sources:
 -   credential:
         credential_type:
             kind: cloud
@@ -1592,7 +1592,7 @@ inventory_sources:
     update_cache_timeout: 0
     update_on_launch: true
     verbosity: 1
-job_templates:
+controller_job_templates:
 -   allow_simultaneous: false
     ask_credential_on_launch: false
     ask_diff_mode_on_launch: false
@@ -5132,8 +5132,8 @@ job_templates:
     verbosity: 2
     webhook_credential: null
     webhook_service: ''
-notification_templates: []
-organizations:
+controller_notification_templates: []
+controller_organizations:
 -   default_environment:
         name: Default execution environment
         type: execution_environment
@@ -5167,7 +5167,7 @@ organizations:
         notification_templates_error: []
         notification_templates_started: []
         notification_templates_success: []
-projects:
+controller_projects:
 -   allow_override: true
     credential:
         credential_type:
@@ -5412,7 +5412,7 @@ projects:
     scm_url: https://github.com/criscofats/super-bassoon.git
     signature_validation_credential: null
     timeout: 0
-schedules:
+controller_schedules:
 -   description: Automatically Generated Schedule
     diff_mode: null
     enabled: true
@@ -5887,8 +5887,8 @@ schedules:
             type: organization
         type: project
     verbosity: null
-teams: []
-users:
+controller_teams: []
+controller_users:
 -   email: cmcaskil@redhat.com
     first_name: Cody
     is_superuser: true
@@ -6122,5 +6122,5 @@ users:
             name: Member
             type: role
     username: test
-workflow_job_templates: []
+controller_workflow_job_templates: []
 ...
