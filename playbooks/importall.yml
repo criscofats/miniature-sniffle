@@ -1,6 +1,6 @@
 ---
 - name: Import all assets
-  hosts: localhost
+  hosts: "{{ HOSTS | default('control[0]') }}"
   connection: local
   gather_facts: false
   vars_files:
