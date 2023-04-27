@@ -1,4 +1,4 @@
-assets:
+---
     applications: []
     credential_types:
     -   description: Credentials needed for AWS Open Environment Ansible workshops
@@ -5077,5 +5077,4 @@ assets:
                 type: role
         username: test
     workflow_job_templates: []
-changed: false
-failed: false
+...
