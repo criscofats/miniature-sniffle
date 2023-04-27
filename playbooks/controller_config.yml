@@ -2,8 +2,8 @@
 - name: Playbook to configure ansible controller post installation
   hosts: controller
   vars_files:
-    - "../vaults/{{ env }}.yml"
-    - "../vaults/vault"
+    - "../group_vars/vaults/{{ env }}.yml"
+    - "../group_vars/vaults/vault"
   connection: local
   tasks:
     - name: Include all vars from /filetree_output
