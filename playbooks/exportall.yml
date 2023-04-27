@@ -4,11 +4,11 @@
   connection: local
   gather_facts: false
   vars_files:
-  - "vaults/vault"
+  - "../vaults/vault"
   collections:
     - awx.awx
   environment:
-    CONTROLLER_HOST: "{{ vault_controller_host }}"
+    CONTROLLER_HOST: "{{ vault_controller_hostname }}"
     CONTROLLER_USERNAME: "{{ vault_controller_username }}"
     CONTROLLER_PASSWORD: "{{ vault_controller_password }}"
     CONTROLLER_VERIFY_SSL: false
@@ -26,4 +26,4 @@
     - name: Export everything to file
       ansible.builtin.copy:
         content: "{{ export_results | to_nice_yaml }}"
-        dest: allassets.yml
+        dest: "../allassets.yml"

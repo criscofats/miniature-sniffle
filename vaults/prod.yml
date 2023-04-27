@@ -1,25 +1,62 @@
 ---
-cloud_token: "{{ vault_cloud_token }}" #'this is the one from console.redhat.com'
-offline_token: "{{ vault_offline_token }}" #'this is the one linked below about api token'
-rh_username: "{{ vault_rh_username }}" #'redhat user login (this is used to attach your subs to controller)'
-rh_password: "{{ vault_rh_password }}" #'password for redhat account'
-rhemp_password: "{{ vault_rhemp_password }}"
-root_machine_pass: "{{ vault_root_machine_pass }}" #'password for root user on builder (if not root user more changes will need to be made)'
-ah_token_password: "{{ vault_ah_token_password }}" #'this will create and use this password can be generated'
-controller_api_user_pass: "{{ vault_controller_api_user_pass }}" #'this will create and use this password can be generated'
-controller_pass: "{{ vault_controller_pass }}" #'admin account pass for controller, if none is given it will default to Password1234!'
-ah_pass: "{{ vault_ah_pass }}" #'hub admin account pass, if none is given it will default to Password1234!'
-ah_host: "{{ vault_ah_host }}"
-ah_token: "{{ vault_ah_token }}"
-vault_pass: "{{ vault_vault_pass }}" #'the password to decrypt this vault'
-insights_password: "{{ vault_insights_password }}"
-pi_password: "{{ vault_pi_password }}"
-github_token: "{{ vault_github_token }}"
-github_key: "{{ vault_github_key }}"
-aws_personal_access_key: "{{ vault_aws_personal_access_key }}"
-aws_personal_secret: "{{ vault_aws_personal_secret }}"
-aws_open_access_key: "{{ vault_aws_open_access_key }}"
-aws_open_secret: "{{ vault_aws_open_secret }}"
-controller_validate_certs: false
-ah_validate_certs: false
+# Personal console.redhat.com automation hub token 04/27/2023
+consolepriv_token: "{{vault_consolepriv_token}}"
+
+# Personal Red Hat offline token 04/27/2023
+offlinepriv_token: "{{vault_offlinepriv_token}}"                                                                                                                              
+
+# Employee console.redhat.com token 04/27/2023
+consoleemp_token: "{{vault_consoleemp_token}}"
+
+# Employee Red Hat offline token 04/27/2023
+offlineemp_token: "{{vault_offlineemp_token}}"
+
+# Personal Red Hat and container registry credentials
+rhpriv_username: "{{vault_rhpriv_username}}"
+rhpriv_password: "{{vault_rhpriv_password}}"
+
+# Employee Red Hat and container registry credentials
+rhemp_username: "{{vault_rhemp_username}}"
+rhemp_password: "{{vault_rhemp_password}}"
+
+# Root password
+root_machine_pass: "{{vault_root_machine_pass}}"
+
+# Automation hub credentials
+ah_pass: "{{vault_ah_pass}}"
+ah_host: "{{vault_ah_host}}"
+ah_token: "{{vault_ah_token}}"
+ah_token_password: "{{vault_ah_token_password}}"
+ah_username: "{{vault_ah_username}}"
+ah_path_prefix: 'galaxy' # this is for private automation hub
+ah_validate_certs: "false"
+
+# Vault password
+vault_pass: "{{vault_vault_pass}}"
+
+# Automation Controller credentials
+controller_hostname: "{{vault_controller_hostname}}"
+controller_username: "{{vault_controller_username}}"
+controller_password: "{{vault_controller_password}}"
+controller_api_user_pass: "{{vault_controller_api_user_pass}}"
+controller_pass: "{{vault_controller_pass}}"
+controller_validate_certs: "false"
+
+pi_password: "{{vault_pi_password}}"
+
+
+
+
+github_token: "{{vault_github_token}}"
+
+# controller.hyperv.corvus.local private key
+github_key: "{{vault_github_key}}"
+
+# Personal AWS credentials
+aws_personal_access_key: "{{vault_aws_personal_access_key}}"
+aws_personal_secret: "{{vault_aws_personal_secret}}"
+
+# AWS open environment credentials
+aws_open_access_key: "{{vault_aws_open_access_key}}"
+aws_open_secret: "{{vault_aws_open_secret}}"
 ...
