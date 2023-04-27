@@ -1,0 +1,28 @@
+---
+- name: Export all assets
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  vars_files:
+  - "vaults/vault"
+  collections:
+    - awx.awx
+  environment:
+    CONTROLLER_HOST: "{{ vault_controller_host }}"
+    CONTROLLER_USERNAME: "{{ vault_controller_username }}"
+    CONTROLLER_PASSWORD: "{{ vault_controller_password }}"
+    CONTROLLER_VERIFY_SSL: false
+
+  tasks:
+    - name: Export workflow job template
+      awx.awx.export:
+        all: true
+      register: export_results
+
+    - ansible.builtin.debug:
+        var: export_results
+
+    - name: Export everything to file
+      ansible.builtin.copy:
+        content: "{{ export_results | to_nice_yaml }}"
+        dest: allassets.yml
