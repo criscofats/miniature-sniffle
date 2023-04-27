@@ -1,9 +1,9 @@
 ---
 all:
   children:
-    dev:
+    prod:
       hosts:
-        localhost:
+        127.0.0.1
       vars:
         connection: local
         controller_configuration_async_retries: 300
@@ -11,29 +11,29 @@ all:
 
     automationcontroller:
       hosts:
-        127.0.0.1:
+        controller:
       vars:
         connection: local
 
     automationhub:
       hosts:
-        127.0.0.1:
+        automationhub:
       vars:
-        connection: local
+        connection: ssh
 
     # can be automationhub if you do not have a specific server for this
     builder:
       hosts:
-        localhost:
+        automationhub:
       vars:
-        connection: local
+        connection: ssh
 
     # only needed if installing AAP with automation, can be removed if you are not
-    database:
-      hosts:
-        127.0.0.1:
-      vars:
-        connection: local
+    # database:
+    #   hosts:
+    #     HERE:
+    #    vars:
+    #      connection: local
   vars:
-    env: dev
+    env: prod
 ...
