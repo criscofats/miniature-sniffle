@@ -315,6 +315,26 @@ assets:
             host: automationhub.hyperv.corvus.local
             password: ''
             username: admin
+            verify_ssl: true
+        name: Automation Hub Container Registry
+        natural_key:
+            credential_type:
+                kind: registry
+                name: Container Registry
+                type: credential_type
+            name: Automation Hub Container Registry
+            organization: null
+            type: credential
+        organization: null
+    -   credential_type:
+            kind: registry
+            name: Container Registry
+            type: credential_type
+        description: ''
+        inputs:
+            host: automationhub.hyperv.corvus.local
+            password: ''
+            username: admin
             verify_ssl: false
         name: Automation Hub Container Registry
         natural_key:
@@ -330,26 +350,6 @@ assets:
         organization:
             name: Default
             type: organization
-    -   credential_type:
-            kind: registry
-            name: Container Registry
-            type: credential_type
-        description: ''
-        inputs:
-            host: automationhub.hyperv.corvus.local
-            password: ''
-            username: admin
-            verify_ssl: true
-        name: Automation Hub Container Registry
-        natural_key:
-            credential_type:
-                kind: registry
-                name: Container Registry
-                type: credential_type
-            name: Automation Hub Container Registry
-            organization: null
-            type: credential
-        organization: null
     -   credential_type:
             kind: galaxy
             name: Ansible Galaxy/Automation Hub API Token
@@ -5088,12 +5088,7 @@ assets:
             type: user
             username: test
         related:
-            roles:
-            -   content_object:
-                    name: Default
-                    type: organization
-                name: Member
-                type: role
+            roles: []
         username: test
     workflow_job_templates: []
 changed: false

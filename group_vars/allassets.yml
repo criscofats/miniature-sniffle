@@ -107,7 +107,7 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: cloud, name: Ansible Workshop Credentials, type: credential_type}
     description: ''
-    inputs: {redhat_username: rh-ee-cmcaskil}
+    inputs: {offline_token: '', redhat_password: '', redhat_username: rh-ee-cmcaskil}
     name: Ansible Workshop Credentials
     natural_key:
       credential_type: {kind: cloud, name: Ansible Workshop Credentials, type: credential_type}
@@ -117,7 +117,7 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: cloud, name: Automation Hub API Token, type: credential_type}
     description: ''
-    inputs: {}
+    inputs: {ah_api_token: ''}
     name: Automation Hub API Token
     natural_key:
       credential_type: {kind: cloud, name: Automation Hub API Token, type: credential_type}
@@ -141,23 +141,12 @@ assets:
       type: credential_type}
     description: ''
     inputs: {auth_url: 'https://sso.redhat.com/auth/realms/redhat-external/protocol/openid-connect/token',
-      url: 'https://console.redhat.com/api/automation-hub/content/10856009-synclist/'}
+      token: '', url: 'https://console.redhat.com/api/automation-hub/content/10856009-synclist/'}
     name: Automation Hub Console
     natural_key:
       credential_type: {kind: galaxy, name: Ansible Galaxy/Automation Hub API Token,
         type: credential_type}
       name: Automation Hub Console
-      organization: {name: Default, type: organization}
-      type: credential
-    organization: {name: Default, type: organization}
-  - credential_type: {kind: registry, name: Container Registry, type: credential_type}
-    description: ''
-    inputs: {host: automationhub.hyperv.corvus.local, password: '', username: admin,
-      verify_ssl: false}
-    name: Automation Hub Container Registry
-    natural_key:
-      credential_type: {kind: registry, name: Container Registry, type: credential_type}
-      name: Automation Hub Container Registry
       organization: {name: Default, type: organization}
       type: credential
     organization: {name: Default, type: organization}
@@ -172,6 +161,17 @@ assets:
       organization: null
       type: credential
     organization: null
+  - credential_type: {kind: registry, name: Container Registry, type: credential_type}
+    description: ''
+    inputs: {host: automationhub.hyperv.corvus.local, password: '', username: admin,
+      verify_ssl: false}
+    name: Automation Hub Container Registry
+    natural_key:
+      credential_type: {kind: registry, name: Container Registry, type: credential_type}
+      name: Automation Hub Container Registry
+      organization: {name: Default, type: organization}
+      type: credential
+    organization: {name: Default, type: organization}
   - credential_type: {kind: galaxy, name: Ansible Galaxy/Automation Hub API Token,
       type: credential_type}
     description: ''
@@ -199,7 +199,7 @@ assets:
   - credential_type: {kind: galaxy, name: Ansible Galaxy/Automation Hub API Token,
       type: credential_type}
     description: ''
-    inputs: {auth_url: '', url: 'https://automationhub.hyperv.corvus.local/api/galaxy/content/rh-certified/'}
+    inputs: {auth_url: '', token: '', url: 'https://automationhub.hyperv.corvus.local/api/galaxy/content/rh-certified/'}
     name: Automation Hub rh-certified
     natural_key:
       credential_type: {kind: galaxy, name: Ansible Galaxy/Automation Hub API Token,
@@ -210,7 +210,7 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: cloud, name: Amazon Web Services, type: credential_type}
     description: ''
-    inputs: {username: ''}
+    inputs: {password: '', username: ABCDEFGHIJKLMNO123456}
     name: AWS Open Environment
     natural_key:
       credential_type: {kind: cloud, name: Amazon Web Services, type: credential_type}
@@ -220,7 +220,7 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: cloud, name: Amazon Web Services, type: credential_type}
     description: ''
-    inputs: {username: ''}
+    inputs: {password: '', username: AKIA2Q4IIN6MUT33JGX3}
     name: AWS Personal Environment
     natural_key:
       credential_type: {kind: cloud, name: Amazon Web Services, type: credential_type}
@@ -240,7 +240,7 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: cloud, name: Configuration as Code, type: credential_type}
     description: ''
-    inputs: {controller_username: admin}
+    inputs: {controller_password: '', controller_username: admin}
     name: Configuration as Code Credential
     natural_key:
       credential_type: {kind: cloud, name: Configuration as Code, type: credential_type}
@@ -271,7 +271,7 @@ assets:
     user: {type: user, username: admin}
   - credential_type: {kind: scm, name: Source Control, type: credential_type}
     description: ''
-    inputs: {username: criscofats}
+    inputs: {password: '', ssh_key_data: '', username: criscofats}
     name: GitHub
     natural_key:
       credential_type: {kind: scm, name: Source Control, type: credential_type}
@@ -281,7 +281,7 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: insights, name: Insights, type: credential_type}
     description: Red Hat Insights
-    inputs: {username: cmcaskill}
+    inputs: {password: '', username: cmcaskill}
     name: Insights
     natural_key:
       credential_type: {kind: insights, name: Insights, type: credential_type}
@@ -291,7 +291,8 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: ssh, name: Machine, type: credential_type}
     description: ''
-    inputs: {become_method: sudo, become_username: root, username: cmcaskil}
+    inputs: {become_method: sudo, become_password: '', become_username: root, password: '',
+      username: cmcaskil}
     name: Linux
     natural_key:
       credential_type: {kind: ssh, name: Machine, type: credential_type}
@@ -311,7 +312,7 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: cloud, name: Red Hat Offline Token, type: credential_type}
     description: ''
-    inputs: {}
+    inputs: {offline_token: ''}
     name: Personal Offline Token
     natural_key:
       credential_type: {kind: cloud, name: Red Hat Offline Token, type: credential_type}
@@ -321,7 +322,7 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: cloud, name: Red Hat Credential, type: credential_type}
     description: ''
-    inputs: {redhat_username: cmcaskill}
+    inputs: {redhat_password: '', redhat_username: cmcaskill}
     name: Personal Red Hat Credentials
     natural_key:
       credential_type: {kind: cloud, name: Red Hat Credential, type: credential_type}
@@ -331,7 +332,7 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: cloud, name: Red Hat Credential, type: credential_type}
     description: ''
-    inputs: {redhat_username: rh-ee-cmcaskil}
+    inputs: {redhat_password: '', redhat_username: rh-ee-cmcaskil}
     name: Red Hat Credential
     natural_key:
       credential_type: {kind: cloud, name: Red Hat Credential, type: credential_type}
@@ -341,7 +342,7 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: cloud, name: Red Hat Offline Token, type: credential_type}
     description: ''
-    inputs: {}
+    inputs: {offline_token: ''}
     name: Red Hat Offline Token
     natural_key:
       credential_type: {kind: cloud, name: Red Hat Offline Token, type: credential_type}
@@ -351,7 +352,8 @@ assets:
     organization: {name: Default, type: organization}
   - credential_type: {kind: ssh, name: Machine, type: credential_type}
     description: Raspberry Pi
-    inputs: {become_method: sudo, become_username: pi, username: pi}
+    inputs: {become_method: sudo, become_password: '', become_username: pi, password: '',
+      username: pi}
     name: RPi
     natural_key:
       credential_type: {kind: ssh, name: Machine, type: credential_type}

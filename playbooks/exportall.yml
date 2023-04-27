@@ -25,5 +25,5 @@
 
     - name: Export everything to file
       ansible.builtin.copy:
-        content: "{{ export_results | to_nice_yaml }}"
-        dest: "../group_vars/allassets"
+        content: "{{ export_results | to_yaml }}"
+        dest: "../group_vars/allassets.yml"
