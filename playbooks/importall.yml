@@ -5,7 +5,7 @@
   gather_facts: false
   vars_files:
   - "../group_vars/vaults/vault"
-  - "../allassets_nice.yml"
+  - "../allassets"
   collections:
     - awx.awx
   environment:
@@ -17,7 +17,7 @@
   tasks:
     - name: Import everything using awx.awx.export
       awx.awx.import:
-        assets: "{{ lookup('file', '../allassets_nice.yml') | from_yaml() }}"
+        assets: "{{ lookup('file', '../allassets') | from_json() }}"
       register: import_results
 
     - name: Registering import results
