@@ -45,3 +45,4 @@ Email Address []:
 - Add miniature-sniffle repo to controller host `git clone git@github.com:criscofats/miniature-sniffle.git`
 - Restore from miniature-sniffle repo `playbooks/controller_config.yml`
 - Add credentials to Default organization for automation hub functionality
+- Export commands `awx --conf.host https://magpie --conf.username admin --conf.password 'password' --conf.insecure export > allassets` `awx --conf.host https://controller --conf.username admin --conf.password 'password' --conf.insecure import < all assets`
