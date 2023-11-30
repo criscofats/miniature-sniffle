@@ -36,11 +36,11 @@
 
   # roles:
   #   - infra.controller_configuration.filetree_create
-- name: Include filetree_create role
-  ansible.builtin.include_role:
-    name: infra.controller_configuration.filetree_create
-  vars:
-    flatten_output: true
+    - name: Include filetree_create role
+      ansible.builtin.include_role:
+        name: infra.controller_configuration.filetree_create
+      vars:
+        flatten_output: true
 
   post_tasks:
     - name: "Delete the Authentication Token used"
