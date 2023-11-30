@@ -40,8 +40,8 @@
       ansible.builtin.include_role:
         name: infra.controller_configuration.filetree_create
       vars:
-        flatten_output: yes
-        input_tag: ['all']
+        flatten_output: true
+        valid_tags: all
 
   post_tasks:
     - name: "Delete the Authentication Token used"
