@@ -41,7 +41,7 @@
         name: infra.controller_configuration.filetree_create
       vars:
         flatten_output: true
-        input_tag: all
+        valid_tags: all
 
   post_tasks:
     - name: "Delete the Authentication Token used"
