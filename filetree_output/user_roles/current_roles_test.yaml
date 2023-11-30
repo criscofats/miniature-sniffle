@@ -1,7 +1,0 @@
----
-controller_roles:
-  - user: "test"
-    organizations:
-      - "Default"
-    role: "member"
-...
