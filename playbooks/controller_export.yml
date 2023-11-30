@@ -35,7 +35,9 @@
 
 
   roles:
-    - infra.controller_configuration.filetree_create
+    - role: infra.controller_configuration.filetree_create
+      vars:
+        flatten_output: true
 
   post_tasks:
     - name: "Delete the Authentication Token used"
