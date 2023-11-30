@@ -9,7 +9,6 @@
     controller_username: "{{ vault_controller_username }}"
     controller_password: "{{ vault_controller_password }}"
     controller_hostname: "{{ vault_controller_hostname }}"
-    flatten_output: true
 
   pre_tasks:
     - name: "Setup authentication (block)"
@@ -35,8 +34,13 @@
         - always
 
 
-  roles:
-    - infra.controller_configuration.filetree_create
+  # roles:
+  #   - infra.controller_configuration.filetree_create
+- name: Include filetree_create role
+  ansible.builtin.include_role:
+    name: infra.controller_configuration.filetree_create
+  vars:
+    flatten_output: true
 
   post_tasks:
     - name: "Delete the Authentication Token used"
